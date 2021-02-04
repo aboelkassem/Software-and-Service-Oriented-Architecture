@@ -41,3 +41,41 @@ These views together are from **Kruchten's 4 + 1 View Model**, that do follow th
 - **Physical View** ⇒ focuses on handles logical, process and development views in different nodes or hardware for running the system, a UML Deployment Diagram express how the pieces of a system are deployed into hardware.
 
 No all software architectures need to be documented using 4 + 1 view model, if any of the view is useless so can be ignored.
+
+### UML Component Diagram
+
+Component diagram is high-level structure used to visualize how a system's pieces interact and what relationships they have among them. Focus on the components of a system and interactions between them not their methods and implementations.
+
+This diagram is concerned with the components of a system. Which components are defined as independent encapsulated units within a system, each component provides and interface for other components to interact with it including third-party libraries.
+
+**Diagram Components Relationship**
+
+- **Ball Connector**: displays a provided interface
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/component-diagram-1.png" width="100" hight="100"/>
+</p>
+
+- **Socket Connector**: displays a required interface (component expects a interface)
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/component-diagram-2.png" width="100" hight="100"/>
+</p>
+
+- **Relationship** shows that the component provided interface matches another component's required interface
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/component-diagram-3.png" width="200" hight="200"/>
+</p>
+
+**Steps to build a Component Diagram**
+
+- Define the **main objects** used in the system
+- Define the **relevant libraries** you need for your system
+- Define the **relationships** between these components
+
+**Example of a component diagram for a video game system.**
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/component-diagram-4.png" width="500" hight="500"/>
+</p>
