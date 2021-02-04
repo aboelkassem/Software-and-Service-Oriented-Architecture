@@ -114,3 +114,56 @@ Packages diagram show packages and the dependencies between them to organize you
 <p align="center" width="100%">
   <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/package-diagram-6.png" width="600" hight="600"/>
 </p>
+
+### UML Deployment Diagram
+
+Software release involves separate libraries, an executable, an installer, configuration files and other different pieces. Once the environment of all pieces are sit, you would use UML Deployment Diagram to visualize these deployment details for a software system.
+
+UML Deployment Diagram deal with Artifacts. **Artifact** which are a physical result of the development process, For example of video game would be an executable to run the game, an installer, audio libraries and multimedia assets
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/deployment-diagram-2.png" width="200" hight="200"/>
+</p>
+
+Two types of deployment diagram
+
+- **Specific Level Diagram**
+
+    Which gives an overview of artifacts and deployment targets without referencing details like machine names. It focuses on a general overview of your deployment.
+
+- **Instance Level Diagram**
+
+    Is much more specific diagram, which can map a an artifact to deployment target. It can identify machines and hardware devices. This approach is used to highlight the differences in deployments amount development, staging and release builds.
+
+**UML Deployment diagram components**
+
+- **Node**: is deployment target that contains artifacts for execution, its the hardware `<<device>>`.
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/deployment-diagram-2.png" width="200" hight="200"/>
+</p>
+
+- **Relationship between deployment targets**, this relationship between nodes mean that there are a communication path (software or protocol) between them.
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/deployment-diagram-3.png" width="300" hight="300"/>
+</p>
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/deployment-diagram-4.png" width="400" hight="400"/>
+</p>
+
+- `<<manifests>>` relationship between artifacts and which component complied and produce it. Which Player.Class is the encapsulated unit that contains all of the functionality of a player.
+
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/deployment-diagram-5.png" width="300" hight="300"/>
+</p>
+
+**Example of UML Deployment diagram**
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/deployment-diagram-6.png" width="600" hight="600"/>
+</p>
+
+Deployment Diagram gives a high level look at the **artifacts**, **libraries**, **main components, machines and devices** that your application needs to run.
