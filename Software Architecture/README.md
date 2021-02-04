@@ -79,3 +79,38 @@ This diagram is concerned with the components of a system. Which components are 
 <p align="center" width="100%">
   <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/component-diagram-4.png" width="500" hight="500"/>
 </p>
+
+### UML Package Diagram
+
+A **package** groups together elements (data, classes, functionality) of your software that are related. It defines as a **Namespace** for the elements it contains.
+
+Packages diagram show packages and the dependencies between them to organize your completed system into packages of related elements.
+
+**Package Diagram components**
+
+- **Tabbed folder** (if the package don't have any elements, package name writes in the center of folder)
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/package-diagram-1.png" width="400" hight="400"/>
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/package-diagram-2.png" width="400" hight="400"/>
+</p>
+
+- **Importing** and **Merging** other packages into package. Dependencies like `<import>` = public import, `<access>` = private import ⇒ mean one package requires help from functions of other package. `<merge>` = merging two packages into single package. `<uses>` = the package need the full implementation of another package
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/package-diagram-3.png" width="400" hight="400"/>
+</p>
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/package-diagram-4.png" width="400" hight="400"/>
+</p>
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/package-diagram-5.png" width="400" hight="400"/>
+</p>
+
+**Example of UML Package diagram**
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/package-diagram-6.png" width="600" hight="600"/>
+</p>
