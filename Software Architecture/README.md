@@ -167,3 +167,40 @@ Two types of deployment diagram
 </p>
 
 Deployment Diagram gives a high level look at the **artifacts**, **libraries**, **main components, machines and devices** that your application needs to run.
+
+### UML Activity Diagram
+
+In this diagram you represent the control flow from one activity to another in a software system, activities is an actions that when completed cause another action to start/execute. For example these action can edit objects or create new objects to drive your application forward. The purpose of this diagram is to capture the dynamic behavior of the system.
+
+**To create Activity Diagram:**
+
+- Identify the activities (actions) performed by the system.
+- Identify the conditions of these activities.
+
+**UML Activity Diagram Components**
+
+- **Start and End** nodes must begin (initialize) and end (final) your diagram with them.
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/activity-diagram-1.png" width="200" hight="200"/>
+</p>
+
+- Intermediate activities that identify to change the application state before ends.
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/activity-diagram-2.png" width="200" hight="200"/>
+</p>
+
+- Decision node that had the condition to determine which outcomes as the next activity.
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/activity-diagram-3.png" width="400" hight="400"/>
+</p>
+
+**Example of UML Activity Diagram of video game**
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/activity-diagram-4.png" width="600" hight="600"/>
+</p>
+
+Also Activity diagrams allow the mapping of activities that happen in parallel and join in single flow after ended. Like if a level ends in a video game, the soundtrack flow will end at the same time as the play flow.
