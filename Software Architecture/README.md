@@ -40,7 +40,7 @@ These views together are from **Kruchten's 4 + 1 View Model**, that do follow th
 - **Development View ⇒** focuses of details of software development and considers elements like programming languages, libraries and tools, also beside code it handles project management details like scheduling, budgets and work assignments.
 - **Physical View** ⇒ focuses on handles logical, process and development views in different nodes or hardware for running the system, a UML Deployment Diagram express how the pieces of a system are deployed into hardware.
 
-No all software architectures need to be documented using 4 + 1 view model, if any of the view is useless so can be ignored.
+Not all software architectures need to be documented using 4 + 1 view model, if any of the view is useless so can be ignored.
 
 ### UML Component Diagram
 
@@ -204,3 +204,52 @@ In this diagram you represent the control flow from one activity to another in a
 </p>
 
 Also Activity diagrams allow the mapping of activities that happen in parallel and join in single flow after ended. Like if a level ends in a video game, the soundtrack flow will end at the same time as the play flow.
+
+## Language-based Systems
+
+Programming paradigm of the language will affect the architectural system of the system, Each programming paradigm has its own constructs, principles, design patterns, and their use to shape the system you create.
+
+One of these styles of language-based system is **Object-Oriented Architectural Style** which results from the **object-oriented programming paradigm** and use object-oriented approach in the development.
+
+### Object-Oriented Architectural Style
+
+object-oriented principles were explored:
+
+- **Abstraction** that simplify a concept by ignoring unimportant details.
+- **Encapsulation** that bundles data and functions into a self-contained object, so other objects can interact with it through an exposed interface.
+- **Decomposition** which allows you to break up a whole problem into smaller, distinct parts.
+- **Generalization** that allows you to factor out conceptual commonalities.
+
+object-oriented Design Patterns were explored:
+
+- **Creational patterns** that guide the creation of new objects.
+- **Structural patterns** that describe the relationships between.
+- **Behavioral patterns** that focus on how objects perform work individually or as a group to accomplish something.
+
+These elements together will lead to an object-oriented architectural style for the system. This style focused on the data called **Abstract Data Types** which can be represented as a **class** the define to organize data attributes in a meaningful way along with their associated **methods.**
+
+Object-oriented refers to a system composed of objects where each object is an instance of a class (the type of object is its class), objects interact with each other though the use of their methods. object-oriented programming paradigm allows inheritance, which mean one class can be extension for another class. The classes within the system will determine the overall structure of the system.
+
+### Main Program and Subroutine Architectural Style
+
+Main Program and Subroutine Architectural Style follows from **the procedural programming paradigm**, also C programming language follows this paradigm. This style focused on **functions**, when try to model your system you break up the overall functionality of the system into **a main program and subroutines**.
+
+the following diagram shows how this style work which mean process of calls **functions**.
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/procedural-programming-1.png" width="600" hight="600"/>
+</p>
+
+The main consideration of this style is the behavior of functions and how data moves through them, so procedural programming supports abstract data types. so this paradigm stored data as variables like object-oriented programming, However, **inheritance** is not supported. But this style is suitable for computation-focused systems.
+
+The principle of this paradigm is "One entry, one exit per subroutine" so each subroutine have its own local variables and has access to all data within its scope, to get access to variable out of scope, you should pass the data as a parameters by value or by reference.
+
+This architectural style focuses on modularity and function reuse. So you can think of them as black boxes meaning gives it a particular input, you always expect the same output. Further, library functions are easily integrated into programs
+
+The issue of this approach is that subroutines may change data in unexpected ways, meaning a subroutine may be affected by data changes made by another subroutine at execution, throwing Runtime errors.  
+
+**Example of spending report.**
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/procedural-programming-2.png" width="600" hight="600"/>
+</p>
