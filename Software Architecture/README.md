@@ -253,3 +253,45 @@ The issue of this approach is that subroutines may change data in unexpected way
 <p align="center" width="100%">
   <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/procedural-programming-2.png" width="600" hight="600"/>
 </p>
+
+## Repository-based Systems
+
+As a software developer, any software architecture you create needs to be capable of sharing information between separate components and stored them in organized database.
+
+### Data Centric Software Architecture
+
+This architecture allow you to store and share data between multiple components, also helps to increase the maintainability, reusability and scalability of the system by integrating a shared data storage like databases.
+
+**Two components of this architecture**
+
+- **Central Data**: used to store and serve the information across all the components connected to it.
+- **Data Accessors**: is any component that connects to the database, they make queries and transactions in the information stored in the database. Query the database to obtain shared system information. Save the new state of the system back into the database using transactions.
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/data-centric-architecture.png" width="600" hight="600"/>
+</p>
+
+**Database**: is used to store data, it make sure the data is accurate and consistent over its lifespan (data integrity), also make sure the data will live on after a process has been terminated (data persistence). **Relational Database** are a type of database that uses **tables**.
+
+Relational Database uses **Structured Query Language (SQL)** to query or ask the database for information and perform transactions or tell a database to do something. Management and optimization of queries and transactions can be automated by **Database Management System (DBMS)**.
+
+**Data accessor** contains all the the business rules required to perform its functions.
+
+**Advantages of Data Centric architecture over a basic object-oriented system.**
+
+- This architecture supports data integrity, data backup and data restoration through a database which can help if there are massive data loss, data corruption or data migrations.
+- It reduces the overhead for data transfer between your data accessors, meaning the data accessor doesn't to be concerned with talking to another.
+- A system that can be easily scaled up, as data accessors are functionally independent, so additional features can be added with having to worry about affecting others.
+- Central data components “live” on a separate server machine with sufficient disk storage dedicated to the database (centralized data repository), which allow for easier management of information
+
+**Disadvantages of Data Centric architecture**
+
+- Using centralized database, the system becomes heavily reliant on the central data component. If the data server goes offline, becomes unusable or contains corrupted data your entire system will be affected, for solving this issue there are data redundancies to replicate your data onto separate hard disks but the physical infrastructure can be expensive and costly to get your system back up and running again.
+- Also your data accessors are dependent on what gets stored in the database. New data accessors need to build around the existing data schema. if there is no matching column or table for a specific data need, then the database cannot be used to save this data.
+- It is difficult to change the existing data schema, which will affect your data accessors.
+
+**For Summary, The data centric software architecture allows you to:**
+
+- **Store and manage large amount of data into a central data component**. This increases your system's stability, performance, reusability and maintainability.
+- **Separate the functionality of your data accessors**, which makes it easier for you to maintain and scale your entire system.
+- **Facilitate data sharing between data accessors through database queries and transactions.**
