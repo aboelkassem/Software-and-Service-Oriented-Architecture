@@ -295,3 +295,33 @@ Relational Database uses **Structured Query Language (SQL)** to query or ask the
 - **Store and manage large amount of data into a central data component**. This increases your system's stability, performance, reusability and maintainability.
 - **Separate the functionality of your data accessors**, which makes it easier for you to maintain and scale your entire system.
 - **Facilitate data sharing between data accessors through database queries and transactions.**
+
+## Layered Systems
+
+In software applications the inner layer (bottom layer) providing services to the one outside it and vice versa. Each layer can communicate with its adjacent layers, For example the following diagram of school system. Principal layer interact with Student layer through Teachers layer, Teach Layer interact with both layers Student and Principal, Also Student can interact with other students. 
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/layered-system-example.png" width="500" hight="500"/>
+</p>
+
+A layer is collection of components that work together toward a common purpose. The components in a layer only interact with components in their own layer or adjacent layers.
+
+Layering allows for separation of concerns into each layers, So many layered system are split into **Presentation, Logic and Data layers**.
+
+The Operating System (OS) for a computer is an example of layered system:
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/layered-system-example-1.png" width="200" hight="200"/>
+</p>
+
+- **Kernal**: is the core of an OS, it main responsibilities it interfacing with the hardware and allocating resources like schedules operations for the processor or reads the input from your mouse/keyboard.
+- **System and Application Libraries**: is used to providing high-level functions (API) that the programs need to interface the kernel like functions for saving file or drawing graphics.
+- **Utilities and Applications**: Utilities are tools included with the OS like command line program or file browser, Applications are programs that installed by the user, this layer rely on the layer below to use system resources.
+
+**The most benefits and advantages of this layered structure.**
+
+- Is that users can **perform complex tasks without understanding the layers below**. Like programmers can create applications that rely on the libraries layer without needing direct knowledge of the kernal.
+- Is that the different layers can be run at different **levels of authorization**, For example the Top layer is run in **User Space** which doesn't have the authority to allocate system resources or communicate with hardware directly. this done by **Sandboxing** which improves the security and reliability of the kernal.
+- Your design will be more **loosely coupled and modular code**. which Layered architecture follows **the principle of Least Knowledge**.
+
+If you do replace a layer, you only have to ensure that its interface with the layer above is consistent with the previous implementation. So why use Layered Systems? because its powerful architecture and many organizations and solutions have a layered structure. And easily mapped to organize a solution of many problems and design complexity.
