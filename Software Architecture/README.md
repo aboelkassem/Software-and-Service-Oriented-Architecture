@@ -325,3 +325,60 @@ The Operating System (OS) for a computer is an example of layered system:
 - Your design will be more **loosely coupled and modular code**. which Layered architecture follows **the principle of Least Knowledge**.
 
 If you do replace a layer, you only have to ensure that its interface with the layer above is consistent with the previous implementation. So why use Layered Systems? because its powerful architecture and many organizations and solutions have a layered structure. And easily mapped to organize a solution of many problems and design complexity.
+
+### N-Tier Architecture
+
+Tiers is similar to layers but often refer to components that are on physical machines. **3-Tier and 4-tier** architectures are common used but any number is possible.
+
+**2-Tier Architecture**
+
+The relationship between **2-Tier** is a **Client/Server** relationship. Which the **Server** side provides services like storing information in database or performing computation tasks. **The Client** side requests these services through messages so the communication between the two sides called **Request-Response**. Which the client request information or actions and the server responds.
+
+**Example of 2-Tier Client/Server architecture that shows media server**
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/n-tier-1.png" width="500" hight="500"/>
+</p>
+
+One computer hosts the media server process, where movies and TV shows are stored and can be streamed on demand. When a client requests a movie or TV show, the media server streams it to the client. Also you can make media server machine in one machine Desktop to play as media player or media server.
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/n-tier-2.png" width="300" hight="300"/>
+</p>
+
+The above Sequence Diagram illustrates the **Request-Response** Messaging relationship. This relationship between client and server can be **Synchronous** or **Asynchronous**.
+
+- In **synchronous**, the client send a request then awaits the server's response before continuing execution.
+- In **asynchronous**, the client sends a request, but control returns right away so it can continue its processing on another need, so the processing not depend on server's response. Once the server has completed the request, a message is sent to the client, which will have a handler to process the response. So its a better option.
+
+**Client-Host** and **Server-Host** refer to machines that host the client and client software. There are many types of servers like Web Servers, Media Servers, Application Servers, File Servers, Data Servers and Print servers.
+
+Limiting **client/server** relationships to **request/response** messaging patterns allows for systems that can be **scaled** more easily by adding clients. Clients and servers are extensible, because as long as a server receives a message it knows, it will respond. The source of the message is not important to the server, so many clients can be added as needed.
+
+**Another example of 2-Tier Architecture**
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/n-tier-3.png" width="500" hight="500"/>
+</p>
+
+Problem: if the database changes, you are going to have to change the software on each and very computer. To make an improvement by inserting a tier in between data and end user to become **3-Tier Architecture**. 
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/n-tier-4.png" width="500" hight="500"/>
+</p>
+
+**This layer** has many names like **Middle** layer, **Business** layer or **Application** layer. It's a client of the database and a server for the client application on the end users' devices. It's used to determined how and when data can be changed. So now  the client software makes request to the application tier, which makes data calls, so its easy to maintain.
+
+N-tier architecture follows on separation of concerns, for above example the application logic could be split into **security** concerns and **database operation** concerns.
+
+**Drawbacks of the N-tier architecture.**
+
+- It **demands extra resources** to manage the client/server relationships, meaning adding more tiers means adding more machines to manage with different communication protocols between machines which make the system more complex.
+- A **server acts a central point of failure**, Systems may have backups or mirrors, but it can take time to switch to these backups and recover the server. Redundant servers are possible but add complexity.
+
+**Advantages of the N-tier architecture.**
+
+- Very **scalable**. Clients can continue to be added as long as a server can handle all the requests it receives in a reasonable time.
+- **Centralization** of functionality allow for data to reside on one machine but to be accessible by any machine on the same network.
+- **Centralization of computing power** allows client machines to require less processing power. Companies can thus offer processing power as a service, which is more practical and cost effective.
+- Supports **separation of concerns**. Middle layers can take the role of managing application logic and accessing the database directly. Adding tiers can further allow for more separation of concerns, loose coupling and levels of abstraction, making a system that is easier to change and extend.
