@@ -434,3 +434,43 @@ The order in which filters transform data may **change the end result**, the inp
 - **May reduce performance due to excessive overheads in filters**. because each filter parse the input into a data structure, do transformations and send data to another, if every filter has to do this process will cause overheads, so the performance of the system will reduce.
 - **May cause filters to get overloaded with massive amount of data to process.**
 - **Cannot be used for interactive applications** because it will take time to process data depend in filters.
+
+## Event-Based Architecture
+
+This architectural style derives from the **Event Driven Programming paradigm**. in this style, the main elements in the system are **events**. Which can be signals, user inputs, messages or data from other functions. Events act as **indicators of change** and **triggers**. In This paradigm **functions** can be **event generators or event consumers**. Which event generators send events, event consumers receive and process these events.
+
+In the event-based architectural style, functions are not explicitly called. Instead, **event consumers are called based on events sent from event generators**. Event-based functions communication between functions by **an event bus** not with each other. Think of event bus as the connector between of all event generators and consumers in the system.
+
+To achieve this structure, bind an event and an event consumer via an event bus. This means that each event consumer registers with the event bus to be notified of certain events, when event bus detects an event it distributes the event to all appropriate event consumers. Like **observer design pattern** which based on this architectural style.
+
+To implement the event bus there are one way, having a **main loop** in the system that continually listens for events, when an event is detected, the loop calls all the functions bound to that event. An event consumer will have to notify other functions when it has completed its task or to send a state change. This function will invoke other functions to run after it has completed. It does this by sending out an event to the event bus. When an event reaches the event bus, corresponding event consumers will be triggered and the next computation can take place.
+
+**Example of Code Editor to understand this process in UML Component Diagram.**
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/event-based-arch-1.png" width="500" hight="500"/>
+</p>
+
+Notice in this example the Build Tool, Test Tool and Editor are all event generators and consumers. The best thing in this architecture is the event consumers don't necessarily know who is generating the events they handled, This loose coupling of functions makes system easier to scale and evolve, adding new functionality for an existing event is as simple as registering a new event function to event bus and add new event consumer.
+
+In this architectural style, events and function don't occur in a predictable way, there are no guarantees of exactly when an event will be handled, how long it will take to be handled or when an event generator will emit an event. Control flow is based on which events occur during its execution and in what order.
+
+This style will be suitable to interactive applications, applications that rely on user input and distributed systems that interact with other programs.
+
+**Cookie Clicker Example to apply event-based architecture.**
+
+ “Cookie Clicker.” The goal of this game is to collect as many points as possible by clicking on an image of a cookie with your cursor. This can be done manually or by clicking on a cursor icon.
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/event-based-arch-2.png" width="400" hight="400"/>
+</p>
+
+When Click in the cookie manually, the total points will increase by one point, The Buy Clicker icon has a functionality, it will purchase a special automatic clicker that automatically clicks the cookie at regular time intervals with 5 cookie points, thus reducing work on the user’s part to collect points.
+
+The following Component Diagram shows the system using event-based architecture.
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/event-based-arch-3.png" width="500" hight="500"/>
+</p>
+
+The "timer" function is an event generator, added to system by first "buy clicker" event, registered to the event bus, that sends a timer event every five seconds, When "timer" function emits a timer event, the event bus detects this and trigger every "Automatic clicker" function to consume this event.
