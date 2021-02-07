@@ -382,3 +382,23 @@ N-tier architecture follows on separation of concerns, for above example the app
 - **Centralization** of functionality allow for data to reside on one machine but to be accessible by any machine on the same network.
 - **Centralization of computing power** allows client machines to require less processing power. Companies can thus offer processing power as a service, which is more practical and cost effective.
 - Supports **separation of concerns**. Middle layers can take the role of managing application logic and accessing the database directly. Adding tiers can further allow for more separation of concerns, loose coupling and levels of abstraction, making a system that is easier to change and extend.
+
+## Interpreter-Based Systems
+
+Systems based on interpreters (Interpreter-Based Architecture) can allow end user to write **scripts** or **rules** that access or run the **basic features** of those systems in new ways like formulas in Microsoft Excel. Which interpreters can run **scripts, macros** and drive programmable actions specified by user.
+
+**Scripts** can write to automate tasks like Schedule tasks, performing repetitive actions or complex tasks. **Macros** are an evolution of scripts and popular with GUI which records keyboard and mouse inputs so that they can be executed later, which allow users to record interactions with user interface like collecting coins in games.
+
+**Interpreter** allows you to add functionality to a system or Extend existing functionality of a system, by composing **pre-existing functions** together to create something new. For example, **web browser extension** is a component that adds new functionality to the browser and can customize the pages that the browser renders which this component written and implemented by language like **Javascript** to run by an interpreter in the browser.
+
+Having a system with built-in interpreter is not only beneficial to **developers**, it encourages end users to implement their **own customizations**. Which the system can offer an easier language suited to the needs and thinking of the end users.
+
+Interpreters make systems more **portable**,  so they can work on platforms that the interpreter supports (languages). This is an important feature with the growth of virtual machines and virtual environments, more and more services are being hosted in the cloud, so you develop and deploy software system onto hardware that you have no control over.
+
+Interpreters can be **slow**, spending little time to analyze the source code and use line by line translate and execute.
+
+**Example of where interpreters are used for java programming languages.**
+
+In Java, programs are first translated into an intermediate language that is loaded into a Java Virtual Machine (JVM), then executes the intermediate language, JVM used to optimize the intermediate instructions monitoring the frequency of the instructions. Which later translated into machine code to execute. On the next execution of the same intermediate instructions, the JVM uses **Lazy Linking** to point the program to the previous machine code translation. Instructions that are not used frequently are left for the **interpreter** of the JVM to execute.
+
+This decrease execution time since frequency used instructions don't need to be constantly translated and the entire program doesn't need to be translated all at once. Also the JVM also provides portability to Java programs, allowing them to run on many operating environments.
