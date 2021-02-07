@@ -402,3 +402,35 @@ Interpreters can be **slow**, spending little time to analyze the source code an
 In Java, programs are first translated into an intermediate language that is loaded into a Java Virtual Machine (JVM), then executes the intermediate language, JVM used to optimize the intermediate instructions monitoring the frequency of the instructions. Which later translated into machine code to execute. On the next execution of the same intermediate instructions, the JVM uses **Lazy Linking** to point the program to the previous machine code translation. Instructions that are not used frequently are left for the **interpreter** of the JVM to execute.
 
 This decrease execution time since frequency used instructions don't need to be constantly translated and the entire program doesn't need to be translated all at once. Also the JVM also provides portability to Java programs, allowing them to run on many operating environments.
+
+## Pipe and Filter Architecture
+
+Pipe and Filter architecture is a type of Data Flow Architecture, **Data Flow Architecture** consider a system is series of transformation on data using different type of operations.
+
+A pipe and filter architecture has entities called **Filters**, which perform transformations on data input they receive. **Pipes** which server as connectors for the stream of data being transformed.
+
+**The following diagram show the data flows in one direction**. The changes of the data are done sequentially from filter to filter.
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/pipe-filter-arch-1.png" width="500" hight="200"/>
+</p>
+
+The order in which filters transform data may **change the end result**, the input of one filter is the output of another, so order is very important. Also it used as the text based utilities in the Unix operating system.
+
+**UML Component Diagram of Pipe and Filter Architecture.**
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/pipe-filter-arch-2.png" width="500" hight="200"/>
+</p>
+
+**Advantages of Pipe and Filter Architecture.**
+
+- **Ensures loose and flexible coupling of components**, because each filter runs independently, so it's only focuses in its input and its output, also easy to move filter around in a system to achieve different results. Also made easily changes on individual filters without affecting other filters in the system.
+- **Filters can be treated as black boxes**, users don't need to know the inner workings of each filter.
+- **Reusability**, is the main advantage of this architecture, each filter can be called over and over again with different inputs.
+
+**Disadvantages of Pipe and Filter Architecture.**
+
+- **May reduce performance due to excessive overheads in filters**. because each filter parse the input into a data structure, do transformations and send data to another, if every filter has to do this process will cause overheads, so the performance of the system will reduce.
+- **May cause filters to get overloaded with massive amount of data to process.**
+- **Cannot be used for interactive applications** because it will take time to process data depend in filters.
