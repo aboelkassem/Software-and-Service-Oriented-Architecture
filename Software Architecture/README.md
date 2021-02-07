@@ -474,3 +474,64 @@ The following Component Diagram shows the system using event-based architecture.
 </p>
 
 The "timer" function is an event generator, added to system by first "buy clicker" event, registered to the event bus, that sends a timer event every five seconds, When "timer" function emits a timer event, the event bus detects this and trigger every "Automatic clicker" function to consume this event.
+
+## Software Architecture in Practice.
+
+Software architecture aims to combine **software design patterns and principles** in order to define the software's **elements**, properties and interaction with each other. If the architecture of the system is just a set of design patterns and principles, then you can determine the capabilities and the quality of the architecture based on the elements. However, this is not the case, because design patterns are good at addressing one specific technical problem but poor at addressing the wide range of business needs and concerns. So modern systems need to be able to focus on a **wide range of problems, not just technical issues.**
+
+System architecture are more concerned with addressing the bigger picture including **functional** and **non-functional** aspects of the system. It will set guidelines for design patterns and principles in order to make the system has conceptual integrity and consistency. In addition to design patterns and principle to define **functional issues** which improve system's maintainability, reusability and performance, but software architecture must consider **non-functional requirements** like testability, usability and availability. So software architecture addresses these qualities in addition to design patterns in order to **construct a unified system** to be qualified by how well the design addresses user experience and ease of development.
+
+**So, How architecture be Good or Bad?** Software architecture is not good or bad. That is to say that an architectural design doesn't have qualities or it's correct that make it a "good architecture" or "bad architecture". Software architecture is designed to address a set of requirements that are used to address a problem or need. **For example** an online web-based game will use event-based architecture over repository-based architecture in order to facilitate communications between players. Also your system will most likely use a combination of architectural designs because the modern requirements are complex and there are no architecture that is capable with all the requirements. So it's important to consider the **context** of the problem and requirements.
+
+There are functional and non-functional requirements when designing the architecture of your system, software must address all the functional requirements but you also need to design to meet non-functional requirements as well. Non-functional requirements are not always clear or presented by your clients or stakeholders. These requirements can differ between each group, for example development team will care about maintainability, reusability, testability and supportability. End users doesn't care about that but care about ease of use, error handling and system stability.
+
+### Quality attributes.
+
+**How measure an architectural design to determine if it is capable of meeting the system requirements?** It is determined by **quality attributes**. Which they are measurable properties of a system used to measure of a system's design, runtime performance and usability. For an attribute to be measurable, there needs to be an objective means of quantifying it. For example, system availability can be measured by the system’s **uptime** in some unit of time.
+
+The following table shows attributes that covered when design a system using design patterns and principles (from developer's perspective).
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/quality-attributes-1.png" width="400" hight="400"/>
+</p>
+
+- **Maintainability** determine how easy systems can undergo changes like fix errors, change software elements, add new features or retire old services.
+- **Reusability** allows you to take functionality or parts of a system and use it in another one. which help to reduce of reimplementing something that has already been done.
+- **Flexibility** is the ability to adapt future requirements changes in a timely and cost efficient manner.
+- **Modifiability** like maintainability, determines the ease at which your system is able to handle changes to functions, adding new functionality or remove existing ones. Also adopting new technologies and industry standards.
+- **Testability** define testing your program from errors and bugs to be fixed before release your system.
+- **Conceptual Integrity** determine which there is consistency throughout the system.
+
+In addition to qualities to account for from a **developer’s perspective**, it is also necessary to take into consideration qualities from a **user’s perspective** in the following table.
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/quality-attributes-2.png" width="400" hight="400"/>
+</p>
+
+- **Availability** is measured by its **uptime** because you want to know how well it is capable from issues like system errors, high loads or updates, and try to prevent them.
+- **Interoperability** is the ability to understand interfaces and use them to exchange information under specific conditions with external systems, meaning how your system response to other systems as outlined in the documentation. Modern system has a define context which it exchanges information including communication protocols, data formats and with whom allowed to exchange information.
+- **Security** should be considered to prevent sensitive information to be accessible to users that are not authorized to see it. System should only provide data integrity, meaning controls who can see the data versus who can also change the data.
+- **Performance** is measured by the amount of output over a period of time to produce this output after receiving an input.
+- **Usability** achieved by your system needs to be easy and intuitive to learn, minimize user errors, provide feedback to the user to indicate that the system has registered their actions, and make it easy to complete tasks.
+
+**How do we go about design a high quality system?** the important matters is being **create, or choose an appropriate architectural design for your system** because architecture is determine how functionality is implemented, how subsystems communicate with each other and how end users interact with your system. If the qualities achieved by the architecture are good, it makes maintaining, supporting, and updating the system throughout its life cycle much easier.
+
+A high-quality system does not need to be “**complex**.” An overly complex system makes it difficult and time consuming to produce. It is good practice to try to minimize complexity in the design. If a **simpler** architecture can satisfy all the system requirements and achieve a high-quality design while needing less time and less money, it makes sense to go with that.
+
+Having detailed and **up-to-date documentation** making it high-quality system, Which helps record and share an architectural vision to coworkers to know how functionality of the system are designed.  The documentation keeps a design cohesive, if the architect or any of the developers leave the team.
+
+You should use a set of **rules or guidelines** for the design process and how your system will be structured. It vary from company to company but there are general guidelines like:
+
+- Recognizing the importance of quality attributes and prioritizing them for each system being design.
+- Involving a technical lead in the design process. Although architectural design can be applied to many different technologies, involving a technical lead will help identify any implementations that may pose a challenge, which may need to be re-considered in the design.
+- Taking a design approach from the perspective of the different groups of stakeholders.
+
+You can write your own guidelines to ensure there is conceptual integrity when implementing the system like:
+
+- Having well defined subsystems that are assigned responsibilities based on design principles.
+- Having consistent implementations of functions across the entire system.
+- Having a set of rules on how resources are used like memory, bandwidth or threads.
+
+In summary, remember that architecture is not good or bad, it is a matter of selecting the appropriate architectural solution for your problem, it is important to involve all groups of stakeholders in the design of the system, to adopt good documentation practices, and to set rules for design and implementation
+
+A well-designed system considers quality attributes from a developer’s perspective, which includes maintainability, reusability, flexibility, modifiability, testability, and conceptual integrity; the system should also consider attributes from a user’s perspective, which includes availability, interoperability, security, performance, and usability.
