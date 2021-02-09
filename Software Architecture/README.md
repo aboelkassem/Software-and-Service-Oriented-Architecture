@@ -1,3 +1,26 @@
+## Table of Content
+- [Architecture overview](#architecture-overview)
+  - [Kruchten's 4 + 1 Model View (4 plus 1 view model)](#kruchtens-4--1-model-view-4-plus-1-view-model)
+  - [UML Component Diagram](#uml-component-diagram)
+  - [UML Package Diagram](#uml-package-diagram)
+  - [UML Deployment Diagram](#uml-deployment-diagram)
+  - [UML Activity Diagram](#uml-activity-diagram)
+- [Language-based Systems](#language-based-systems)
+  - [Object-Oriented Architectural Style](#object-oriented-architectural-style)
+  - [Main Program and Subroutine Architectural Style](#main-program-and-subroutine-architectural-style)
+- [Repository-based Systems](#repository-based-systems)
+  - [Data Centric Software Architecture](#data-centric-software-architecture)
+- [Layered Systems](#layered-systems)
+  - [N-Tier Architecture](#n-tier-architecture)
+- [Interpreter-Based Systems](#interpreter-based-systems)
+- [Pipe and Filter Architecture](#pipe-and-filter-architecture)
+- [Event-Based Architecture](#event-based-architecture)
+- [Software Architecture in Practice.](#software-architecture-in-practice)
+  - [Quality attributes.](#quality-attributes)
+  - [Analyzing and Evaluating an Architecture](#analyzing-and-evaluating-an-architecture)
+- [Product Lines (Product Families)](#product-lines-product-families)
+  - [Reference Architecture](#reference-architecture)
+  
 ## Architecture overview
 
 **Software Architecture** is the fundamental design of the software system. It defines what **elements** are included in the system, what **function** each element has, how each element **related** to another. In plain text, it is the big picture (overall structure) of the whole system.
