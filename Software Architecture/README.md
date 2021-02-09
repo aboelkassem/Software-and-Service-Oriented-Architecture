@@ -634,3 +634,73 @@ In an ATAM, a software project is initiated when business drivers identify a nee
 Modern systems are becoming more and more complex as technology grows, and creating an architecture that can achieve all the requirements for quality attributes is becoming increasingly important. Being able to evaluate and analyze architectures helps successfully create high-quality systems.
 
 ATAM is a common method for analyzing and evaluating architectures, especially as it does not require evaluators to have intimate knowledge of the system, and covers the viewpoints of all important stakeholders. ATAM helps minimize risks in a system by identifying them and helps architects minimize the effects of sensitivity points and be sensible about trade-offs. Also helps facilitate communication between stakeholders, Found issues with the newly discovered functionalities, elevated the role of software architecture.
+
+## Product Lines (Product Families)
+
+As developers work, they should always be looking for opportunities for **code re-use**. The software world is full of code re-use implemented in different ways. Such as libraries, toolkits, and engines. Which save time for developers and get robust solutions by reusing code. Reusing code is much faster than developing new code. Even if code has to be modified or adapted to the application, its still faster that writing from scratch. So well-written and well-documented code is important. 
+
+**Product lines** are groupings of products that typically **share the same operating system**, which allow for a great deal of code re-use. For example IOS which is developed for product line of iPhones, iPads, and iPod touch products.
+
+**Product lines present several advantages:**
+
+- **Cost**. Product lines designed with similar features allow companies to **save money** because it reduces their development costs per product. The time saved on development can be spent testing for quality attributes, such as reliability, user experience, security, and maintainability. However, less testing is needed overall per product, because code that is reused has already been tested.
+- **User Experience**. If several products share characteristics, then the learning curve for customers and developers is smaller and fewer surprises. This may also drive sales of other products in the same line. Which is a key strategy of Apple company.
+- **Time-to-market**. Since most software components are already made, making a new product in the product line, or refining an existing one, takes less time.
+
+If only one or two products are being produced, it might not be worthwhile to treat them as a product line, unless there is intent to develop more products later on.
+
+**Implementing Product Lines:**
+
+Separate the features that stay the same from the features that are different across products.
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/product-lines-1.png" width="500" hight="500"/>
+</p>
+  
+- **Commonalities** like the user experience of the apple products.
+- **Variations** like supporting for different cellular network connections in the line of tablets, IPhones.
+- **Product-Specifics** like the tablets which developed specialize in reading eBooks. Its product specifics could be additional tools for managing eBooks and support for an e-ink screen
+
+Product line development teams are generally divided into two camps:
+
+- **Domain engineering**: is the development of the commonalities and variations. Essentially this is putting together the building blocks of the products or the infrastructure.
+- **Application Engineering**: is the actual development of the product. It includes using the commonalities, deciding which variations are necessary, and integrating them into the product and developing product-specific features. This is sometimes described as “instantiating” a product. There could be several application engineering teams, one for each product.
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/product-lines-2.png" width="600" hight="600"/>
+</p>
+
+Separating development into domain and application engineering allows for **separate development cycles**. The domain engineering team can determine the long-term needs of the product line, evolve and test components as needed, then **release that infrastructure to the application team**. Then, the application team can develop product specific features using the infrastructure and the requirements of the product. They will develop product-specific features, decide what variations to use, and test the final product. This can be done while the domain engineering team is working on the next update of the infrastructure.
+
+### Reference Architecture
+
+Products in a product line likely have similar architectures, as they serve a similar purpose. Instead of creating a new architecture from scratch for each product, the product line usually has an architecture that products can build on or change. **The domain team** is generally responsible for this **reference architecture**.
+
+**The reference architecture must:**
+
+- be designed with respect to the needs of the software, while taking into account all current products in the product line.
+- include the capacity of variation, for differences in products and to allow for future products in mind.
+
+Because there will be differences in the product line, there are **three general techniques** to realize **variations** in a system:
+
+- **Adaptation technique**. In this technique, the component has only one implementation, but it supplies interfaces to change or add on to it. Components can be adapted through **settings in a configuration file**, by adding new methods or by overriding existing methods
+
+  <p align="center" width="100%">
+    <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/product-lines-3.png" width="300" hight="300"/>
+  </p>
+
+- **Replacement technique**. In this technique, there could be a default component that is replaced with alternatives to realize variation. There may not even be a default; instead there is a gap in the system, and the developers must supply one of the components.
+
+  <p align="center" width="100%">
+    <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/product-lines-4.png" width="300" hight="300"/>
+  </p>
+
+- **Extension technique.** In this technique, a common interface is provided for all the variations of the system. These variations are often called extensions, add-ons, or plugins.
+
+  <p align="center" width="100%">
+    <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/product-lines-5.png" width="300" hight="300"/>
+  </p>
+
+Variations can be realized at different times. Different variations may even come in at different stages they can be formed early on, during the design or development process of the application engineering team, or they can be formed when the software is compiled and built. Similarly, variations can be realized at different times, like when the software is launched or after the software is launched, whenever they are needed.
+
+Product lines are an efficient way to use the power of code re-use in related products, which save time and cost. Usually this is done by splitting development into domain engineering and Application Engineering. Product lines impose new requirements on the architecture. The reference architecture applies to all products in the product line, and must handle both commonality and changes. The extra resources and the common code in product lines can be used for all kinds of good. Like reliability, user experience, security, time-to-market, and maintainability.
