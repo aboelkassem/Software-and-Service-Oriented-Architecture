@@ -535,3 +535,102 @@ You can write your own guidelines to ensure there is conceptual integrity when i
 In summary, remember that architecture is not good or bad, it is a matter of selecting the appropriate architectural solution for your problem, it is important to involve all groups of stakeholders in the design of the system, to adopt good documentation practices, and to set rules for design and implementation
 
 A well-designed system considers quality attributes from a developer’s perspective, which includes maintainability, reusability, flexibility, modifiability, testability, and conceptual integrity; the system should also consider attributes from a user’s perspective, which includes availability, interoperability, security, performance, and usability.
+
+### Analyzing and Evaluating an Architecture
+
+Software systems are designed to address the specific business needs to various stakeholders, So we need to use a methodical way of analyzing and evaluating a system's behaviors, quality attributes , and various characteristics to meet a specific set of standards.
+
+In order to measure quality attributes, they use **quality attribute scenarios** to determine if a system is able to meet the requirements. There are two types of scenarios:
+
+- **General scenario** is used to characterize any system
+- **Concrete scenario** is used to characterize a specific system.
+
+In the context of analyzing and evaluating architecture, you should focus on situations that are **outside of the normal execution path**. This means that scenarios involving incorrect input, heavy system loads, or potential security breaches should be prioritized highly.
+
+**Scenario** is a system's ability to handle unexpected failures that stops from achieving a specific quality attributes.
+
+Each scenario consists of:
+
+- **Stimulus source**: is anything that creates a stimulus, a source can be internal or external to the system like internal timer for internal system, or end user for external system.
+- **Stimulus**: is a condition that will cause the system to respond, conditions like internal specific error could be a buffer overflow, or external specific error could be incorrect user input.
+- **Artifact**: is the part of the system that is affected by the stimulus. In large-scale systems, a stimulus should not directly affect the entire system.
+- **Environment**: is the mode of the system when it is receiving a stimulus.
+- **Response**: is how the artifact will behave as result of receiving a stimulus like handling an error, recovering from a failure, updating system logs, dispatching security alerts, or changing the current environment.
+- **Response Measure:** a metric used to quantify the response so that the quality attribute can be measured, like probability of failure, response time, repair time, and average system load.
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/evaluate-and-analysis-arch-1.png" width="400" hight="400"/>
+</p>
+
+**Availability Quality Attribute Scenario Example**
+
+Imagine you are addressing the availability of a system. In addition to focusing on when a system is online and behaving normally, you have to consider situations where the system becomes unavailable, and measure how long it takes to recover.
+
+**In a general scenario**, high-level events are summarized:
+
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/evaluate-and-analysis-arch-2.png" width="400" hight="400"/>
+</p>
+
+**In a concrete scenario** which allows you to test an architecture with a specific stimulus, under specific system environments, and measure how well the system can respond. For exmple
+
+- Availability for a web server can measured in a its ability to process requests when at resource limits or under heavy load, so you can measure a server's availability under different conditions.
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/evaluate-and-analysis-arch-3.png" width="400" hight="400"/>
+</p>
+
+**Architecture Trade-off Analysis Method (ATAM)**
+
+This technique developed by Software Engineering Institute at Carnegie Mellon University, used to analysis and evaluation of the entire architecture. Which its main advantages that evaluators/architects don't need to be familiar with the architecture or the problem space.
+
+ATAM involves three different groups of participants:
+
+- **Evaluation Team** which has:
+    - **Designers** which are the ones involved with the architectural design. these follows an iterative, Hypothesis-Driven method when designing which involves analyzing requirements, creating a design, reviewing the design to see if it works.
+    - **Peers** which are not involved in the design decision, but Their point-of-views helps round out design decision.
+    - **Outsiders** who external to the project or organization, helps to eliminate bias towards the project and have experience in analyzing architecture.
+- **Project Decision Makers** these have the authority to make project decisions, including project managers, clients, product owners, software architects, and technical leads.
+- **Architecture Stakeholders** which includes anyone who want the architecture to successfully address business needs but who are not actively involved in the evaluation process, like end users, developers, and support staff.
+
+The following diagram shows high level flow of ATAM:
+
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/ATAM-1.png" width="600" hight="600"/>
+</p>
+
+In an ATAM, a software project is initiated when business drivers identify a need for a system to address some problem. Business drivers go hand in hand with the system architecture, which is created as the solution to the business issues. Together, business drivers and system architecture determine the quality attributes of the system, the architectural approach taken, and the design decisions that are made. These combine together to create quality attribute scenarios. Scenarios can then be analyzed, resulting in an evaluation of the system, which includes trade-offs, sensitivity points, non-risk scenarios, and risk scenarios. Since the risk scenarios have a negative impact on the quality of the system, each of them are analyzed and categorized into “risk themes".
+
+**The ATAM process and its nine steps**
+
+- **Present the ATAM**. The evaluation team presents the ATAM process, which includes the context for the evaluation, expectations, procedures, outputs, and address any other concerns.
+- **Present the business drivers**. This project decision makers present the business problem, and the goals of the system, system's features and requirements, project constrains, and scope.
+- **Present the architecture**. The current and expected state of architecture is presented, constraints of the project that can affect the architecture such as time, cost, difficulty of the problem, and quality expectations.
+- **Identify the architectural approaches**. This is the first analysis activity which involves examining the architectural patterns that have been used in the system so far. In this step you analyze the documentation, the notes from presentations, and ask questions to get more clarity about the system.
+- **Create a quality attribute tree**. The requirements for each quality attribute is details in a utility tree. which captures all the quality related architecturally significant requirements (**ASRs**). Which get from business drivers to utility system's quality attributes. You can insight about the system and identify the quality priorities by working with the project decision makers to refine your tree.
+
+    
+  <p align="center" width="100%">
+    <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/ATAM-2.png" width="600" hight="600"/>
+  </p>
+
+    To build such a tree, the overall “utility” of a system is broken down into quality attributes, which are refined into attribute refinements. **Attribute refinements** are more specific qualities of a system. Once the quality attributes have been refined, ASRs can be associated with the appropriate attribute.
+
+    In quality attribute trees, ASRs are given priority values to denote if they are “must-haves” or not. The example above uses high (H), medium (M), and low (L) designations, but these values could differ from system to system.
+
+- **Analyze the architectural approaches**. Using the prioritized ASRs from utility tree, examine the architecture and determine how it addresses each ASR. this allows you to identify and document the risk and non-risk scenarios, sensitivity points, and trade-offs. Sensitivity Point can affect the quality attributes, For example high traffic may cause an increase in the system's latency. Trade-offs occur when sacrifice one quality for improvements in another, For example you could limit the number of concurrent users allowed on your system, this limit the system's availability but don't worry about increasing latency while system grows up.
+- **Brainstorm and prioritize scenarios**. Each group of participants creates quality attribute scenarios that are important to them, and that they would expect when using the system. Scenarios that have similar quality concerns or behaviors can be merged together. Scenarios are prioritized based on importance to each stakeholder, and the evaluation team compares the list with the prioritized ASRs in the utility tree. If the priorities of the stakeholders match closely with the priorities in the utility tree, then there is **good alignment.**
+- **Re-analyze the architectural approaches**. Similar the earlier analysis, you create a utility tree, but you will use the top five or ten scenarios prioritized in the previous step.
+
+
+  <p align="center" width="100%">
+    <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Software%20Architecture/Images/ATAM-3.png" width="600" hight="600"/>
+  </p>
+
+- **Present the result**. Finally the results of the evaluation are compiled and presented. This risk scenarios are grouped together, and categorized into "risk themes". Risk themes help to identify which business drivers are affected. The information presented includes all architecture documents, utility trees, risk and non-risk scenarios, sensitivity points, tradeoffs, and risk themes.
+
+Modern systems are becoming more and more complex as technology grows, and creating an architecture that can achieve all the requirements for quality attributes is becoming increasingly important. Being able to evaluate and analyze architectures helps successfully create high-quality systems.
+
+ATAM is a common method for analyzing and evaluating architectures, especially as it does not require evaluators to have intimate knowledge of the system, and covers the viewpoints of all important stakeholders. ATAM helps minimize risks in a system by identifying them and helps architects minimize the effects of sensitivity points and be sensible about trade-offs. Also helps facilitate communication between stakeholders, Found issues with the newly discovered functionalities, elevated the role of software architecture.
