@@ -113,5 +113,50 @@ Services provide a user **interface** that can be embedded in a web page or appl
 For example, you were developing a personal landing page, it may have its own content like blog or a writing portfolio, it also uses external services, like showing your latest post from Microblog service provider, or an external Photo-storage service provider. you may get information from your calendar and your travel itinerary, integrated into applet to tell people when you have free time to meet and where you will be. Each of these services produces content for the landing page. So the request is **asynchronous.**
 
 <p align="center" width="100%">
-  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/history-of-web-2.png" width="400" hight="400"/>
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/history-of-web-2.png" width="500" hight="500"/>
 </p>
+
+### Layers of Web Architecture
+
+Layer is collection of components that work together toward a common purpose. Layers used to **identify hierarchies in the system** and **to restrict how layers interact with each other**. So components in a layer only interact with components in their own layer or adjacent layers through interfaces provided by each component.
+
+Complex systems require more layers to help logically separate the components. However, the disadvantage of adding additional layers is that **performance suffers** due to the increase in communication between the layers.
+
+Layered systems are organized into **Presentation**, **Application**, and **Data tiers**. In web systems, presentation tier is divided into two layers, **web browser** and **web server**.
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/layers-web-app-1.png" width="300" hight="500"/>
+</p>
+
+- **The Web Browser Layer** is the top layer, it displays the information to the user.
+- **The Web Server Layer** is below the web browser layer, it receives a request from the web browser, **obtains the request content** and **returns it to the browser**.
+- **The Application Layer** which is responsible for ensuring the function or service provided by the system is performed.
+- **The Data Layer** which is responsible for storing, maintaining, and managing data. Access to data read-only or both reading and writing. It can be a file system or database.
+
+Not all systems require this four layers, and not all systems use these layers the same way.
+
+**Layers for Static Web Content**
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/layers-web-app-2.png" width="300" hight="500"/>
+</p>
+
+The web server layer receives the request from the web browser and grabs the appropriate HTML documents stored in data layer. After it has accessed, it returns the request content to the browser.  There is no application layer in a static web content system, as the HTML documents served by the web server are the exact as stored in the file system. No processing has been applied
+
+**Layers for Dynamic Web Content and Web Applications**
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/layers-web-app-1.png" width="300" hight="500"/>
+</p>
+
+Web browser and web server perform the same way as above with static content, the web server passes on the request to an application server in the application layer for processing, The application layer may consist of one or more programs that process the request to generate the resulting content. Also The application layer may also call upon other **web services**, and read and write data to a database via the data layer
+
+**UML Component diagram of web systems**
+
+Think of web as a collection of services. For example database provides data services, and the application server is a service requester to the database. The application server runs programs that may access a variety of web services provided outside the system.
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/layers-web-app-3.png" width="400" hight="400"/>
+</p>
+
+Layered architecture and use of outside web services reinforces the basic design principles of separation of concerns and code reuse. Layers have specific responsibilities, while outside services provide functionality that the system does not have to implement. The scope of using web services is huge, so it raises the challenge of identifying the right ones to use.
