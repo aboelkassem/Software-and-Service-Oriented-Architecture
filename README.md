@@ -160,3 +160,102 @@ Think of web as a collection of services. For example database provides data ser
 </p>
 
 Layered architecture and use of outside web services reinforces the basic design principles of separation of concerns and code reuse. Layers have specific responsibilities, while outside services provide functionality that the system does not have to implement. The scope of using web services is huge, so it raises the challenge of identifying the right ones to use.
+
+### HTML/XML/JSON
+
+Web systems have many different types of formats that can be used to store and express content. Types like HTML,XML,JSON.**HTML** and **XML** are markup languages used to express and structure content. **JSON** is a popular lightweight data interchange format. 
+
+Markup languages are designed to adorn texts in a machine and human readable way, to add meaning or structure. Markup languages rely on **tags** to mark how pieces of text are interpreted. Like:
+
+```html
+<adjective>service-oriented</adjective>
+<noun>architecture</noun>
+```
+
+There is no programming syntax in markup languages. Tags turn a simple text file into something a computer can manipulate or a human can understand.
+
+**HTML (HyperText Markup Language)**
+
+HTML Standard focuses on structuring, not styling the text. It marks what parts of the page text are the title, headings, paragraphs.. etc. Which need to be rendered by a web browser.
+
+HTML has a predefined set of tags that serve different purposes, like the following basic code of HTML document.
+
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Page Title</title>
+	</head>
+
+	<body>
+		<h1>This is a Heading</h1>
+		<p>This is a paragraph.</p>
+	</body>
+</html>
+```
+
+- **DOCTYPE** is necessary as first line in any HTML file, which tell the browser that the content is HTML.
+- **Head tag** contains metadata being used by the page.
+- **Body tag** contains the main content and information of your web page. Like the text, links, images, lists, and other data you want to present.
+
+There is no styling in HTML document, but if you want add styling like fonts or colors, you can add CSS (Cascading Style Sheet). This styling can be applied via a separate CSS file, or directly within the HTML document into `<style>` tag in header section. For example color paragraph in blue.
+
+```css
+p {
+	color:blue;
+}
+```
+
+**XML (eXtensible Markup Language)**
+
+This markup language meant to store and transport data. XML is used to send structured data within a web systems. You can define an XML schema for the valid tag and their appropriate structure. For example of XML document.
+
+```xml
+<?xml version=”1.0” encoding=”UTF-8”?>
+<note>
+	<to>John</to>
+	<from>Jane</from>
+	<heading>Reminder</heading>
+	<body>Don’t forget the dogs.</body>
+</note>
+```
+
+**JSON (JavaScript Object Notation)**
+
+Another format that can be used to store and transport data between web browsers and servers. The benefit of using JSON format is the ability to easily convert JSON to **JavaScript** objects, or any languages and vice versa. For example of JSON object 
+
+```json
+{
+	"firstName":"John",
+	"lastName":"Doe",
+	"Age":"15",
+	"favouriteColour":"Red"
+}
+```
+
+JSON data is written as **name-value** pairs. JSON data can also have **arrays** of JSON objects which written in square brackets like following,
+
+```json
+{
+	"Students":[
+		{
+			"firstName":"John",
+			"lastName":"Doe",
+			"Age":"15",
+			"favouriteColour":"Red"
+		},
+		{
+			"firstName":"Mohamed",
+			"lastName":"Abderahman",
+			"Age":"21",
+			"favouriteColour":"Black"
+		},
+		{
+			"firstName":"Ahmed",
+			"lastName":"Mostafa",
+			"Age":"19",
+			"favouriteColour":"Blue"
+		}
+	]
+}
+```
