@@ -259,3 +259,119 @@ JSON data is written as **name-value** pairs. JSON data can also have **arrays**
 	]
 }
 ```
+### HTTP
+
+**HyperText Transport Protocol (HTTP)** is a protocol that dictates how information, including hypertexts, is transferred across the Internet.
+
+To understanding HTTP, first begins with Hypertext. **Hypertext** is a document embedded with hyperlinks which used to link HTML documents. HTTP was designed to facilitate the use of hypertext and support the communication of documents and resources expressed in HTML.
+
+Over time, hyperlinks have been used to link together **multimedia** resources, such as images, videos, gifs, text, and audio, or documents containing any combination of these. Resources can be static, such as HTML documents, images, or videos, or dynamic, such as programs that produce some output when they are called.
+
+We will focus on **HTTP 1.1**, although several protocol versions exist.
+
+**URIs and URLs**
+
+**Universal Resource Identifiers (URIs)** are addresses used to **identify resources**, **Universal Resource Locators (URLs)** are a subset of URIs that used to **locate resources**. Both are used to identify the resource, but 
+
+- **URLs** tell the protocol how to locate and access the resource, which provide the protocol, the domain name, or IP address, of the machine that resource stored on and the location of the resource on the machine. So All URLs are URIs, but not all URIs are URLs.
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/uri-url.png" width="300" hight="300"/>
+</p>
+
+So as example of URI ⇒ [http://example.com/user/favoriteitems/widebrimsunhat/sunhat.png](http://example.com/user/favoriteitems/widebrimsunhat/sunhat.png)
+
+- **Protocol** ⇒ Http
+- **Hostname** ⇒ example.com
+- **Location of the resource on the host machine** ⇒ [user/favoriteitems/widebrimsunhat](http://example.com/user/favoriteitems/widebrimsunhat/sunhat.png)
+- **Resource** ⇒ sunhat.png
+
+> The URI does not need to explicitly provide the **IP address**. The browser is able to resolve the IP address corresponding to the hostname provided in the URI. or if it doesn’t know, it will query a Domain Name System (DNS) server to find out.
+
+HTTP is built on top of another protocol called **TCP (Transmission Control Protocol)**.
+
+**TCP**
+
+When a client makes a request to a server, this opens a TCP connection between the client and server allowing for communication. Messages are sent and received through **TCP ports.**
+
+**HTTP** relies on TCP connections as they allow for reliable, ordered, connection oriented communication. This mean when a browser accesses a URI that starts with “http”, a connection between the web browser and a web server is opened on **TCP port 80**. This port is the **default** for HTTP messages. For example ⇒ [http://example.com:80/user/favoriteitems/widebrimsunhat/sunhat.png](http://example.com/user/favoriteitems/widebrimsunhat/sunhat.png), and occasionally you cannot see port numbers, as production systems typically use the default TCP ports.
+
+**HTTP Requests and HTTP Responses**
+
+HTTP is build upon a client/server design. The relationship exists between a web browser and web server. So the general format of HTTP request and responses are the following:
+
+- **Request** Consists of :
+    - **Request-Line:** This includes the request method (GET, POST, PUT), request URI, and protocol. This URI may end in a query string to specify parameter data for the request. This string is separated from the path by a question mark (?).
+    - **Headers**: Client requests may have a various number of headers, of different kinds. It can be used to provide more information and give context to the request. Two Headers that must be included in any request are the **Host Header** and **Accept Header**. Host Header contains the domain name or IP address of the host. Accept Header to tell the server what kinds of content the client will accept as a response. **If a message body is present**, **Content Length Header** indicates the size of the body in bytes. **Content Type Header** indicates the type of body must be included.
+    - **A Blank Line**: after headers. If no message body is required for the request, then the request ends here.
+    - **Message Body**: contains the message body,  if it is required for the request. Message bodies might be HTML documents, JSON, encoded parameters, or other similar content.
+- **Response** Consists of:
+    - **Status-Line**: This includes protocol version and status code, which tell the client the status of the request. There are many possible HTTP status codes. If the request has been successfully processed, the status code of “**200 OK**” will likely show.
+    - **Headers**: Like request headers.
+    - **A Blank Line**: after headers. If no message body is required for the response, then the response ends here.
+    - **Message Body**: Like HTTP request.
+
+**URL-Encoding**
+
+HTTP limits the characters used in URIs, request queries and request bodies to be **ASCII**. Special or unsafe characters, like **space** or **Unicode**, require the encoding of these characters. An example of an unsafe character is a “space” which can be replaced with `%` sign, followed by their two digit hexadecimal digit encoding. For example, a space can be encoded with “**%20**”, or with a “**+**” sign. For example the sentence "software design and architecture" will encoded like:
+
+- software%20design%20and%20architecture
+- software+design+and+architecture
+
+And to encoded query string we use `=` symbol to assign each query parameter it's value, 
+
+- color=red
+- height=very+tall
+
+and use `&` symbol to join all the parameter value pairs
+
+- color=red&height=very+tall
+
+Now as we said, HTTP request must indicate a request method in it request line. These methods tell web server what if should do with the request. Most request methods usually used are GET, POST, and PUT.
+
+**GET Method**
+
+**GET** methods retrieves the resource given by the URI provided in the request line. For example this could retrieve a webpage, image, or specific output of a program. **A Query String** may be sent along with the request in the URI, it always start with a question mark (?). **No messages body is sent along with a GET request**.
+
+**For example,** you are reviewing a reservation you made on camping.com. At the time of booking, the reservation number 17021 is issued. To review the booking, the url-encoded query string [?number=17021] must be sent to [camping.com/reservation](http://camping.com/reservation).
+
+**Here is the GET Request and Response.**
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/GET-Method.png" width="500" hight="500"/>
+</p>
+
+**POST Method**
+
+is used to add or modify the resource/information according to the message body of the request on the host specified in the URI of the request . HTML forms often use POST requests to submit data.
+
+**For the previous example**. Your family would like to come on the camping trip. You offer to book another campsite for them. As you are creating a new reservation on the website, the POST method will be used for the request.
+
+**Here is the POST Request and Response.**
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/POST-Method.png" width="500" hight="500"/>
+</p>
+
+**PUT Method**
+
+It takes the information provided in the body of the request, and creates or updates a resource at the location specified in the URI of the request. The PUT method can be used to create or update a resource, like the POST method. The information contained in the request body of a POST method, however, is created or updated under an identity and location determined by the web server, which is not necessarily the identity and location in the supplied URI.
+
+**For previous example**, imagine that the camping website allows users to add notes to a reservation, for the staff to receive. Imagine you would like to have a campfire during the trip, but you do not have an axe or wood. The reservation can be accessed with the reservation number. To add a note, a PUT request needs to be made to that location. The note will be a JSON object and delivered in the body of the request.
+
+**Here is the PUT Request and Response.**
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/PUT-Method-1.png" width="400" hight="400"/>
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/PUT-Method-2.png" width="400" hight="400"/>
+</p>
+
+**HTTP Stateless**
+
+HTTP can also be **stateless**. This means that the relationship between requests is **not preserved**.
+
+For example, if you are browsing an online shopping website and clicking on items. HTTP protocol **doesn't keep track of which items you've previously clicked**. Each time you click another item, a new request is sent, but the protocol is unaware if the same client is making the request.
+
+To **track** the behavior of shoppers on the website, we use **HTTP cookies**, the first time a client makes a request the site gives them an HTTP cookie to store information about the client's browsing session. The cookie is stored by the client (Browser) and updated by the server each time the client makes a request to the server. This allows a server to store state information about interactions with this client, which can be useful for tracking purposes.
+
+HTTP is fundamental for the web, as it dictates how data is communicated and exchanged. This makes HTTP very important for invoking and accessing web services.
