@@ -375,3 +375,33 @@ For example, if you are browsing an online shopping website and clicking on item
 To **track** the behavior of shoppers on the website, we use **HTTP cookies**, the first time a client makes a request the site gives them an HTTP cookie to store information about the client's browsing session. The cookie is stored by the client (Browser) and updated by the server each time the client makes a request to the server. This allows a server to store state information about interactions with this client, which can be useful for tracking purposes.
 
 HTTP is fundamental for the web, as it dictates how data is communicated and exchanged. This makes HTTP very important for invoking and accessing web services.
+
+### JavaScript
+
+Like many other programming languages, **JavaScript** can be used for a variety of purposes, but here, we will focus on how it can be embedded into HTML documents to making **web pages interactive**.   JavaScript is able to modify **elements**, **attributes**, **styles**, and **content** within the HTML document. JavaScript can be embedded between `script` tags in HTML (`<script></script>`).
+
+JavaScript is an interpreted language where the web browser interprets the JavaScript code at runtime.
+
+It is possible for web pages to provide some interaction to users **without JavaScript**, through the use of HTML **forms** that submit **POST or GET** requests like the following diagram. The web server responds to the request by providing the web browser with a new HTML document. The result of the interaction will be visible only after the browser has received and loaded the new HTML document.
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/js-1.png" width="400" hight="400"/>
+</p>
+
+However, interactions provided to users on a web page embedded **with JavaScript** tend to be more efficient and more usable. With JavaScript, a form can be partly checked and processed on the **client-side**. This means that the browser does not have to wait for the web server to provide a new page, instead, the JavaScript on the page can **dynamically** change the HTML web page that is already loaded in the browser as it runs the client-side in the browser. This offloads some of the processing required to operate this application so that not everything needs to be processed server-side. Some interactions with a web page, even with JavaScript embedded within, will still require contact with a web server, but it is not always necessary.
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/js-2.png" width="400" hight="400"/>
+</p>
+
+JavaScript is able to modify elements on a web page by making use of the **HTML Document Object Model (DOM)**. When a page is loaded in a web browser, the HTML document becomes a document object. This object can be used by JavaScript to obtain and modify the elements and content on the web page. As a result of processing the document **object**, the **content**, **structure**, and **style** of an HTML document can be modified.
+
+**For example,** JavaScript can be used to modify elements on a web page, such as providing the ability to make image thumbnails grow in size when clicked, and shrunk back down when clicked again, or to hide and reveal text, as for spoilers on text-based web pages.
+
+It is not necessary to know JavaScript well in order to use it. **Pre-made scripts** are often available online, from a trusted source. These scripts can be used as is or with small modifications they can be applied to suit a web page’s needs.
+
+**For example,** you can use comment management services like **Disqus** to allow users to comment on your web page and allow you to moderate these comments. It just copying and pasting some JavaScript into the HTML document.
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/js-3.png" width="500" hight="500"/>
+</p>
