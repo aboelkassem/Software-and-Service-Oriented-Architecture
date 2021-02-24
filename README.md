@@ -405,3 +405,114 @@ It is not necessary to know JavaScript well in order to use it. **Pre-made scrip
 <p align="center" width="100%">
   <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/js-3.png" width="500" hight="500"/>
 </p>
+
+### Distributed Systems Basics
+
+The rapid growth of the internet and the falling costs of cloud services has led to a rise in innovative web services such as Google Docs, PayPal, and [Amazon.com](http://amazon.com). For internal company, private network now facilitate client/server communications.
+
+Modern client machines are not as powerful as their server counterparts. This is because a client machine is designed to address a different set of concerns. For example, **clients** are designed to facilitate a single user, whereas a **server** will have to provide computing power for multiple users. The operating system (OS) of clients is designed to be use and learn. Servers are used by system administrators, or other IT professionals, Their user interface may requires more expertise to use. 
+
+Since machine and operating environments are different between clients and servers, they communicate with the help of **middleware.**
+
+**Middleware**
+
+**Middleware** is a type of architecture used to facilitate communications of services available and requests for these services between two applications that are operating on different environment systems.
+
+New software systems are designed to be able to **communicate with other systems over a network**. Legacy systems are commonly updated, redesigned, or rewritten in order to be able to utilize network connectivity.
+
+**Computer networks** have enabled the growth of **Distributed Computing**. Which is a system architecture in which computers on a network are able to communicate and coordinate their actions by passing messages through a network. This has enabled developers design tiered architectures, which each layer focusing on specific aspects of the overall system.
+
+Middleware facilitates communication on a large scale by providing a common interface between entire distributed systems. This architecture resembles the mediator design pattern.
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/middleware-1.png" width="500" hight="500"/>
+</p>
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/middleware-2.png" width="500" hight="500"/>
+</p>
+
+Middleware allows developers to access functionalities of a system, without having to implement an entire tier of subsystems in their architecture.
+
+As modern systems become more and more complex. As systems move towards n-tiered architectures, middleware needs to be able to encapsulate more functionalities, from business logic and distribution of client requests to being involved in handling authentication and authorization.
+
+### **Remote Procedure Call (RPC)**
+
+RPC is the basis for middleware systems used for web services. It designed as a middleware component for networked systems, and had been improved its flexibility. As name suggest, **PRC** allows clients to invoke procedures that are implemented on a server.
+
+In RPC, the **client and server** are either:
+
+- **on separate machines.**
+
+    Which mean the physical address space between client and server is different, so the client does not know the physical memory address of the procedure that it wants to call in the server since they do not share the same physical memory.
+
+- **are a different virtual instance on the same machine.**
+
+    The “virtual” address is shared between client and server. It is up to the operating system to manage each individual virtual instance, and find the correct virtual address for the procedure being invoked.
+
+In either case, the client cannot directly access the procedure being called. RPC facilitates the call between client and server.
+
+**History of RPC**
+
+RPC was developed and introduced in the 1980s, it was created to provide a transparent method of calling procedures that were located on a different machine.
+
+RPCs consist of three primary components:
+
+- **A client** which is the caller. It is the component that is making the remote call.
+- **A server** which is the callee. It is the component that implements the procedure that is being invoked.
+- **An interface** definition language, or IDL, which is the language through which the client and server communicate.
+
+RPC could also include name and directory services, and binding methods to allow clients to connect to various servers. At this starting point, RPCs were a simple **collection of libraries** that developers could include in their applications. These libraries contained all the functionalities that were required in order for systems to **make remote procedure calls**. Eventually, RPCs evolved to become cornerstones for middleware-based architecture.
+
+RPCs became successful because they did not require developers to learn a new language or programming paradigm, but instead used the familiar concept of procedures. So distributed systems could be designed and implemented more efficiently.
+
+RPCs are currently used in many different configurations – they can be stored procedure calls in a database system, or in XML messages for web services.
+
+**Basics of RPC and How does it work?**
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/rpc.png" width="500" hight="500"/>
+</p>
+
+**The IDL** is the specification for remote procedure calls. It tells the client what remote services are available, how they are accessed, and what the server will respond with.
+
+Once the IDL is compiled, the **client and server stubs** are produced. They perform the “heavy lifting” with **interface headers**.
+
+- **Client Stub**
+    - which responsible for: Establishing the connection between server through process called binding.
+    - Formatting the data to standardized message structure such as XML.
+    - Sending remote procedure call RPC.
+    - Receiving the server stub's response.
+- **Server Stub**
+    - Receive the call and invoked desired procedure, It also contains the code for receiving the remote call, translate message into data format the server, and sends the server's response back to the client stub.
+- **Interface Headers**
+    - They are a collection of code templates and references that are used to define what procedures are available.
+    - There are three types of interfaces, procedure registration, procedure call, procedure call by broadcast.
+
+**Steps How RPCs are Performed**
+
+- Client invokes the procedure.
+- The client stub converts the parameters to a standardized message format.
+- The message is sent to the server.
+- The server stub receives the messages.
+- The server component executes the procedure and returns the result to the server stub.
+- The results are returned back to the client stub.
+- The Client component receives the processes the results.
+
+**Synchronous RPCs**
+
+During a remote procedure call, the client component pauses its execution while it waits for a response. This is also known as **blocking**, since the client cannot perform any other task until the server returns a result.
+
+This cause many issues like:
+
+- If the server never returns a response, the client can end up waiting indefinitely.
+- It may not be clear how long to wait for a server to response. Some procedures may take longer than others, or the server may take longer to create a response under a heavy load.
+- The RPC may need to be re-transmitted, and this can be difficult to determine.
+
+**Asynchronous RPCs**
+
+Modern systems need to be able to handle remote procedure calls in an asynchronous manner. Asynchronous systems are considered **nonblocking**, because clients do not need to wait for a server response before moving onto another task. This allows components of a distributed system to work independently.
+
+Systems are also able to perform different tasks in parallel with each other because they do not need to wait for one task to end before starting another.
+
+Asynchronous behavior adds more complexity to a system, because how the system allocates resources for various pending tasks needs to be managed. Note that overloading a system with asynchronous tasks can also reduce the system’s overall performance.
