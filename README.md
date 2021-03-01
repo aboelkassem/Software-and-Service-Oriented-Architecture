@@ -766,3 +766,145 @@ This is an example of request to add coffee to an online shopping cart in the fo
   <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/rest-2.png" width="400" hight="400"/>
   <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/rest-3.png" width="400" hight="400"/>
 </p>
+
+### Designing a REST Service
+
+So we will explore **best practices to follow to create a well-designed RESTful API.** These include:
+
+- **Use only nouns for a URI;**
+- **GET methods should not alter the state of resource;**
+- **Use plural nouns for a URI;**
+- **Use sub-resources for relationships between resources;**
+- **Use HTTP headers to specify input/output format;**
+- **Provide users with filtering and paging for collections;**
+- **Version the API;**
+- **Provide proper HTTP status codes.**
+
+**Use only nouns for a URI**
+
+For example to create a server for university system with students and teachers, you can have a few URIs like this:
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/rest-4.png" width="500" hight="500"/>
+</p>
+
+and don't use URIs based on verbs like `/GetAllTeachers` because it's not resource based.
+
+**GET methods should not alter the state of resource**
+
+GET methods should only **get/retrieve resources**, but not alter the state of them. Methods used to manipulate resources are PUT, POST, and DELETE. This keeps RESTful APIs consistent with other developers and easy to follow for future client applications.
+
+**Use plural nouns for a URI**
+
+Simplicity is key to a good API, when you're creating a service to deal with resources, its better to keep it simple when referring to resources like `/students` to get all students.
+
+**Use sub-resources for relationships between resources**
+
+This means that when a resource is related to another resource you can show the connection in the URI, For example
+
+- `GET` /students/3/courses     ⇒ get all the courses of student 3
+- `GET` /students/3/courses/2  ⇒ et the information on course 2 connected of student 3
+
+**Use HTTP headers to specify input/output format**
+
+Headers are used to specify a lot of different properties. Two headers that are very important to making APIs easier to use. Content Type and Accept Headers
+
+- **Content-Type**: define the format of the message. (Input)
+- **Accept**: defines a list of acceptable formats that can come as response. (Output)
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/rest-5.png" width="400" hight="400"/>
+</p>
+
+**Provide users with filtering and paging for collections**
+
+When there are large data sets to parse through, good APIs provide filters to help search through the data. This is done by allowing parameters to be passed after question mark(?). For example 
+
+- `GET` /courses?department=computing+science ⇒ return those that are in the department of computing science.
+- `GET` /courses?offset=10&limit=5 ⇒ These can provide filtering and paging for APIs, making the responses quicker.
+
+**Version the API**
+
+Web services can be used by millions of users. **Any changes** to APIs can break existing applications or services that call the APIs. Version numbers help prevent issues and future headaches, and clearly describe where changes occurred. In the example below, “v2” is used to specify the version number. For example ⇒ `http://api.yourservice.com/v2/students/34/courses`
+
+**Provide proper HTTP status codes**
+
+There are many different HTTP status codes that can be returned as a response to a request, but the common is
+
+- `200` ⇒ which means that everything is working and functioning on the server side.
+- `201` ⇒ which means that a new resource has successfully been created.
+- `204` ⇒ which means that a resource has successfully been deleted.
+
+Using the correct status code during RESTful API responses can help developers understand and use APIs better.
+
+**Example of Creating a RESTful service.**
+
+Create a basic REST service where you can store, retrieve, and delete information about students and their courses.
+
+First thing to thing about is the services that I should provide, so it will be ways to retrieve information about students, courses and info about which courses students are taking. These will be our `GET` APIs
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/rest-6.png" width="400" hight="400"/>
+</p>
+
+Also should able to create, update, and delete resource
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/rest-7.png" width="400" hight="400"/>
+</p>
+
+Next, create a resource class for a student, like following
+
+```java
+public class Student
+{
+    private long id;
+    private String fullname;
+    private String department;
+
+    public Student(long id, String fullname, String department)
+    {
+        this.id = id;
+        this.fullname = fullname;
+        this.department = department;
+    }
+
+    public long getId()
+    {
+        return id;
+    }
+    public String getFullname()
+    {
+        return fullname;
+    }
+
+    // other methdos
+    private void save()
+    {
+        // code that saves to db
+    }
+}
+```
+
+Next, create java file that handles the HTTP request that we planned, this can be done through many pre-build Java libraries that provide the client library to communicate with RESTful service. Java libraries like `Restlet`, `Spring`, `Jersy`, `RESTEasy` , like the following using Jersy to create post method to create a student
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/rest-8.png" width="500" hight="500"/>
+</p>
+
+Once all the API methods have been written and finished, all you need to do is deploy it by using Apache or any other web server software. Now you should able to access your API by using the following URL ⇒ `http://your-ip-address/studentcourseapi/`
+
+Now, you can test your REST service by creating your own client application that calls these URIs, or simply sending an HTTP request through the command line.
+
+You can use **CURL tool**, which is a tool to transfer data from or to a server. Like the following curl command 
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/rest-11.png" width="300" hight="300"/>
+</p>
+
+which sends an HTTP request to the server and invokes the POST API created with the JSON object containing a single student named James Dean in the department of computing science. Which also look like this.
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/rest-9.png" width="400" hight="400"/>
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/rest-10.png" width="400" hight="400"/>
+</p>
