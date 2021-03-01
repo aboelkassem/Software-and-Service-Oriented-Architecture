@@ -1,3 +1,24 @@
+## Table of Content
+- [Introduction to Service-Oriented Architecture and Web Services](#introduction-to-service-oriented-architecture-and-web-services)
+  - [Service Principles](#service-principles)
+  - [History of Web Systems](#history-of-web-systems)
+  - [Layers of Web Architecture](#layers-of-web-architecture)
+  - [HTML/XML/JSON](#htmlxmljson)
+  - [HTTP](#http)
+  - [JavaScript](#javascript)
+  - [Distributed Systems Basics](#distributed-systems-basics)
+  - [**Remote Procedure Call (RPC)**](#remote-procedure-call-rpc)
+- [Web Services](#web-services)
+  - [Introduction to Web Services](#introduction-to-web-services)
+  - [Service Invocation (SOAP)](#service-invocation-soap)
+  - [Service Description (WSDL)](#service-description-wsdl)
+  - [Service Publication and Discovery (UDDI)](#service-publication-and-discovery-uddi)
+  - [Service Composition (BPEL)](#service-composition-bpel)
+- [REST Architecture](#rest-architecture)
+  - [Introduction to REST Services](#introduction-to-rest-services)
+  - [Designing a REST Service](#designing-a-rest-service)
+  - [Introduction to Microservices](#introduction-to-microservices)
+
 ## Importatnt Note
 > Before starting reading this, you can see [Software Architecture](https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/tree/main/Software%20Architecture) article, which we will introduce the most common architectures, their qualities, and tradeoffs. We talked about how architectures are evaluated, what makes a good architecture, and an architecture can be improved. We'll also talk about how the architecture touches on the process of software development.
 
