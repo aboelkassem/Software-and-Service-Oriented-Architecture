@@ -516,3 +516,37 @@ Modern systems need to be able to handle remote procedure calls in an asynchrono
 Systems are also able to perform different tasks in parallel with each other because they do not need to wait for one task to end before starting another.
 
 Asynchronous behavior adds more complexity to a system, because how the system allocates resources for various pending tasks needs to be managed. Note that overloading a system with asynchronous tasks can also reduce the system’s overall performance.
+
+## Web Services
+
+So in this section, you'll be looking at the standards for how web services are invoked, described, published, discovered, and composed.
+
+### Introduction to Web Services
+
+What is a service? A service is some functionality that is 'exposed' for use by other processes. In other words, a service has an interface that can be used by some service requester. A web service, then, is functionality that is exposed and accessible using web technologies.
+
+Before using web services, building integrated systems was a difficult task, like the following, which making them work-intensive to implement and difficult to maintain and extend.
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/web-service-1.png" width="400" hight="400"/>
+</p>
+
+But now, Enterprise Application Integration (EAI) is an enterprise-level solution for this integration problem, it uses a form of **middleware**, which is a software that is located between other software and facilitates communication between them.
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/web-service-2.png" width="400" hight="400"/>
+</p>
+
+However, implementation in business to business (B2B) interactions, is not always clear for middleware. For example, identifying which business **implements or hosted** the middleware, **managing security**, and **protecting data** from outside influence can complicate B2B. So **EAI is not used for B2B interactions**.
+
+To solve these issues, **web services** are implemented for interactions between businesses. Web services are usually implemented with a specific set of **standards** and **protocols** for implementing services over the web. Web services are defined by the World Wide Web Consortium (W3C) as “a software system designed to support interoperable machine-to-machine interaction over a network”
+
+**Standards and Technologies that make up web services.**
+
+- **Web Infrastructure**: Web services start with **TCP**, the networking protocol responsible for reliable connection-oriented communication. On top of that is **HTTP**, to send information and interact with clients.
+- **Invoking (SOAP):** like calling method in object-oriented programming, In order to use particular service, you must invoke it in **XML** or **JSON**. Invoking in web services is done by Simple Object Access Protocol (**SOAP**), a protocol specification that is based on XML and allows services to send information to another. So system coded in different language and on different platform can easily communicate.
+- **Describing (WSDL)**: Services must know how to interact with each other (**documentation**), so Web Service Description Language (**WSDL**), is the standard protocol for describing the interface of a service in a machine-readable, which enable requester to bind to this interface, Like SOAP, WSDL descriptions are written in **XML**. Binding is the act of generating the necessary code to interact with a service to be open for invoking.
+- **Publishing and Discovery (UDDI):** Service providers can **publish** descriptions of their services using UDDI (Universal Description, Discovery, and Integration), So requesters can search by WSDL descriptions or other aspects of the service. Together SOAP, WSDL, UDDI are standards of web services and rely on web infrastructure.
+- **Composition (WS-BPEL)**: Various standards can be built on the foundational standards, These standards usually have the **prefix WS,** such as **WS-Security** for adding security functions, or **WS-Coordination** for coordinating the activities of many services. WS-BPEL (Business Process Execution Language) which allows developers to combine existing services into new composite services.
+
+These standardization of how web services invoke, describe, and publish means that their internal implementation does not matter. Service requesters and services can effectively interact despite being on different platforms and in different languages. However, the commands and parameters of the standards must be supported by the service provider.
