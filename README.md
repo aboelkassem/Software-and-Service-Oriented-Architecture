@@ -613,3 +613,35 @@ Four basic messaging patterns exist for SOAP. Since SOAP messages are stateless,
 	</p>
 
 Some of disadvantages include the fact that XML encoding and decoding adds overhead and does not easily accommodate some data types. These disadvantages have resulted in SOAP being superseded in many applications by methods that use HTTP more directly, such as RESTful web services.
+
+### Service Description (WSDL)
+
+In web services, Web Service Description Language (**WSDL**) is a standard used to describe the **interface** of a web service. This helps SOAP messages find services, and understand how to interact with services, including parameters. WSDL descriptions can be read by potential service requesters, either programmatically or by developers. WSDL was created by Microsoft, IBM, and Ariba by combining various attempts at standardization. WSDL descriptions are written in XML, and can be compared to method signatures in object-oriented programming. Like the following method signature.
+
+```java
+public BigDecimal exchangeRate(String currency1, String currency2)
+```
+
+WSDL will include, for example, **How to structure a request**, **Input parameters required**, **Data the service will output**, the location where the service requester will send SOAP messages, the transport protocol it will be sent on, and more.
+
+**WSDL** descriptions are machine-readable, which allows the service requester to generate necessary code to interface with a service provider automatically. This process is known as **binding**, whether or not it is done automatically or by the developer. Only after binding can the service requester invoke the service using SOAP messages that they structured with the help of WSDL descriptions.
+
+**WSDL Description**
+
+Because web services are more complex than methods, a WSDL description needs more information. Some of the most important part of a WSDL 2.0 description are
+
+- **Types**:  which describe the data types that are used. Developers can define abstract data types in XML. If only basic data types already available in XML are used by interactions, then this part is not needed.
+- **Interfaces**: describe interfaces to the services provided in terms of what operations can be performed and in what order. The order of operations can be described by the message exchange patters of  request-response, solicit-response, one-way, and notification. Interfaces were formally called portTypes in WSDL 1.2.
+
+The categories used to bind **interfaces** to concrete implementations are:
+
+- **Bindings**: which determine how the SOAP message is translated into XML, and dictate the form of the messages, as well as specifying the transport protocol on top of which the SOAP messages are sent.
+- **Services**: which bring together interfaces and bindings, and assign them to **endpoints** or **ports**. These are located with URIs.
+
+**For example:**
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/wsdl.png" width="500" hight="500"/>
+</p>
+
+WSDL provides a **robust**, **modular**, and **extensible** service description language. WSDL description enables reuse because WSDL descriptions are broken into very fine descriptions which allow for the reuse of parts of WSDL specifications in different ways. WSDL documents can also import other WSDL documents, gaining them access to data types in the imported WSDL description or to interfaces.
