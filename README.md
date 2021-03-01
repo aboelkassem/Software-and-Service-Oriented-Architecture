@@ -720,3 +720,49 @@ BPEL (Business Process Execution Language) is standard high-level composition la
 </p>
 
 BPEL supports basic operations like “if-then-else” decisions, or other logic from various program languages and wrappers. In addition to composition, web services are also associated with **coordination**. Coordination is when a process coordinates the activities of two or more services. Composition is distinguished from coordination because it exposes the collection of actions as another service.
+## REST Architecture
+
+In this section we will cover what is RESTful web service looks like and how it works, also we'll talk about microservices.
+
+### Introduction to REST Services
+
+REST (REpresentational State Transfer) architectural style is used in distributed applications by using HTTP to send messages to communicate between components. In general, REST is a client-server architecture based on request-response design.
+
+The client sends a request and the server responds, but in REST, the communication is **resource-based**. Resources can be any pieces of information that are self-contained. This can include **documents**, **images**, **object** representations, etc.
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/rest-1.png" width="300" hight="200"/>
+</p>
+
+**REST constraints**
+
+- **REST is a Client-Server Architecture**
+
+    Server provides **services** to the client like creating or manipulating data, and Client provides users with a **user interface** to access these services. This applies separation of concerns which allows highly scalable, each them occur independently. The client can be improved to provide users with simple and fast user interface without affecting the server, while the server can manipulate larger sets of data because it is freed from having to implement any client responsibilities.
+
+- **REST is a Layered System**
+
+    These layers can be used to improve performance, translate messages, and manage traffic, which helps to improve reusability of REST web services.
+
+- **Interactions must be Stateless**
+
+    This means that the server **does not save information about the current client state or previous request** made by the client. Servers are only aware that the client exists when a request is made. All necessary information for the server to understand and respond to the request comes through with the request.
+
+    This improves the performance of web services, as servers do not have to remember the current states of clients in the system. however, is that this imposes significant restrictions on the way a client and server communicate. **Every time a client sends a request to a server, it must provide and store information about its current state**. For example if authentication is needed by a server for client to have access to data, then client side must send that authentication information in every request.
+
+- **Clients can Cache responses**
+
+    This mean that clients can keep local copy of a server response to use for later requests, Basically, every time a server responds to a client request, the server adds information to response to label it as cacheable or non-cacheable. This can help improve performance by reducing the number of requests for the same resources. The server decides for the client side what information should be temporarily saved and what can be deleted after use.
+
+- **Uniform Interface between the client and server**
+
+    The first is that there are specific methods that can be understood. REST uses the common **HTTP methods, GET, PUT, POST, and DELETE**, to communicate different actions the client wants to perform on the resources. The second is that the resource must be identified in the request with a specific **URI**. Finally, the representations of the resources are uniform. Responses have specific headers, and the resource is written in three specific ways: **XML**, **JSON**, or **simple text.**
+
+**REST Example of a request and response**
+
+This is an example of request to add coffee to an online shopping cart in the form or **XML** data, uses **PUT** method and **URI**. Response in **JSON** object. Headers include section called **cache-control** which determines if the information should be cached on the client's side
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/rest-2.png" width="400" hight="400"/>
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/rest-3.png" width="400" hight="400"/>
+</p>
