@@ -550,3 +550,66 @@ To solve these issues, **web services** are implemented for interactions between
 - **Composition (WS-BPEL)**: Various standards can be built on the foundational standards, These standards usually have the **prefix WS,** such as **WS-Security** for adding security functions, or **WS-Coordination** for coordinating the activities of many services. WS-BPEL (Business Process Execution Language) which allows developers to combine existing services into new composite services.
 
 These standardization of how web services invoke, describe, and publish means that their internal implementation does not matter. Service requesters and services can effectively interact despite being on different platforms and in different languages. However, the commands and parameters of the standards must be supported by the service provider.
+
+### Service Invocation (SOAP)
+
+In web service, service provider and requester is communicate with each other through **XML messages**, based in Request-Response pattern in all interactions between web services and the software that uses those services. **SOAP** (Simple Object Access Protocol) is developed by Microsoft, which allow requester to invoke services.
+
+Like method call in OOP, the purpose of SOAP message is to solicit an operation from remote web service, and is in an XML-formatted document. For example SOAP message like this:
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/soap.png" width="400" hight="400"/>
+</p>
+
+- A **header** is used to also provide contextual information like information about the client or routing information.
+- The **body** contains the information that the service provider needs to determine which service to provide and the service’s input.
+
+**Styles of SOAP messaging**
+
+- Document Style
+- RPC Style
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/soap-1.png" width="400" hight="400"/>
+</p>
+
+SOAP messages must be sent over transport protocol, like **HTTP** or other protocols like **SMTP** which is used for email. A SOAP message can be send using HTTP Post.
+
+Messaging is **synchronous** if the service request **waits** for a response before continuing. A program might be left doing nothing while waiting for a response, particularly if the availability or response time of a web service is an issue.
+
+Messaging is **asynchronous** if interactions allow the code to **keep executing**. This means that when a message returns from the service provider, the code can process it.
+
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/soap-2.png" width="400" hight="400"/>
+</p>
+
+**Messaging Patterns**
+
+Four basic messaging patterns exist for SOAP. Since SOAP messages are stateless, these interactions are implemented by relating messages another way, like storing the interaction state on the client and/or the server, or by using extensions to web services like WS-Coordination.
+
+- Request-Response: this pattern is when the requester first sends a message then receives a replay from the service provider, this is a Synchronous, which can be implemented over HTTP
+
+	<p align="center" width="100%">
+	  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/soap-3.png" width="300" hight="200"/>
+	</p>
+
+- Solicit-Response: the service provider makes a request to the requester, this is often a confirmation
+
+	<p align="center" width="100%">
+	  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/soap-4.png" width="300" hight="200"/>
+	</p>
+
+- One-Way: The requester sends a request to the service provider but not expect a response. Like a notification that the requester is up and running (online).
+
+	<p align="center" width="100%">
+	  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/soap-5.png" width="300" hight="200"/>
+	</p>
+
+- Notification: The service provider sends a notification to the requester without expecting a response. Event-based systems.
+
+	<p align="center" width="100%">
+	  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/soap-6.png" width="300" hight="200"/>
+	</p>
+
+Some of disadvantages include the fact that XML encoding and decoding adds overhead and does not easily accommodate some data types. These disadvantages have resulted in SOAP being superseded in many applications by methods that use HTTP more directly, such as RESTful web services.
