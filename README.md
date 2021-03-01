@@ -908,3 +908,78 @@ which sends an HTTP request to the server and invokes the POST API created with 
   <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/rest-9.png" width="400" hight="400"/>
   <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/rest-10.png" width="400" hight="400"/>
 </p>
+
+### Introduction to Microservices
+
+Before we learn about what microservices are, let's look back through time to see where the idea come from. In the early days of software development, developers made large, **monolithic** applications, these applications usually were developed by large team, all working on the same code base. Large monolithic applications were hard to maintain and scale, Took a long time to develop, Suffered from performance issues.
+
+To solve this issues, we introduced **SOA** (Service-Oriented Architecture) which provide principles to guide developers to break down the functionality of their monolithic enterprises into smaller more manageable, modular services. These services are loosely coupled and strictly encapsulated. Each service is intended as a tool.
+
+**Microservices** can be thought of as a variation of SOA applied on an application scale rather than enterprise scale. Microservice architectural style is the way of composing microservices to produce complex applications.
+
+A **microservice** is a process that is responsible for performing a **single independent task**. A microservice typically is built to perform a specific business capability. For example, in an application, one microservice is responsible for implementing a **search feature**, another can implement a **recommendation feature**, and yet another microservice can be responsible for implementing a **rating feature** and so on. Although microservices are developed and exist independently, ultimately they are composed together to provide the overall functionality of an application.
+
+Each microservice **doesn't obey a full layered architectural style** because microservices are composed with other microservices and are not always intended for end users, presentation and application layers may not always be present. However, usually each microservice controls and manages its own data. As result microservices application not follow a layered architectural style.
+
+**For example the following Online library application which compose the following microservices.**
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/microservices-1.png" width="500" hight="500"/>
+</p>
+
+Each microservice has a well-defined interface or API that informs other microservices how it can be used and communicated with. Communication is done through standards and protocols such as HTTP and XML, JSON. REST interfaces are used to keep communication between microservices stateless. It is desirable for each request-response to be independent of any other request-response.
+
+**Advantages of Microservices**
+
+- **Microservices can use languages, frameworks, and architectures that are best suited to the service. This means that different microservices can use different languages, frameworks and architectures.**
+    - It allows developers to create a service using the most appropriate tools for the job.
+    - It provides the opportunity for developers to try out new technologies without making an application-wide commitment.
+- **Microservices make applications easier to scale and maintain.**
+    - A particular microservice can easily be scaled by replication. If there are multiple copies of the same microservice, then multiple requests to the original microservice can be handled in parallel. For example, a microservice responsible for processing orders could be replicated to increase the throughout of processing large volumes of orders to balance the work.
+- **Microservices make applications more resilient to failure**
+    - Multiple copies of the same microservice means that if one instance of the microservice fails, the other instances can continue functioning. For above example of processing orders if one of the instances is no longer functional, the remaining instances continue handling the orders. Throughput of the system might decrease if there is one less microservice instance processing, but users of the system would be unaware of the failure.
+- **Microservices can be scaled and maintained independently.**
+    - Microservices have loose coupling. This allows them to be scaled independently, which is important because not all microservices within an application need to scale at the same rate. For example when the application needs to be updated, repaired, or replaced, this can be done with one microservice at a time without effecting the rest of the application.
+- **Microservices can be developed quickly, and deployed and maintained by a small, independent team.**
+    - Because a small team is responsible for a small piece of functionality of the entire application, the team does not need to be familiar with the whole application to be able to do their jobs. Microservices can thus be developed quickly and in parallel.
+
+**Disadvantages of Microservices**
+
+- **Some centralized management of all microservices will be required to coordinate all the microservices.**
+    - An application made up of microservices is a distributed system, that is enabled through asynchronous communication. So microservices will need to be coordinated through some central method of management, or they may become inconsistent and result in errors.
+- **Transactions may span multiple microservices.**
+    - Databases will likely be distributed over multiple microservices, so transactions may span multiple microservices. Again, centralized management is needed to prevent inconsistencies and errors.
+- **Testing is complex.**
+    - Test conditions change, which result in making it harder to test a distributed system. It can be difficult to reproduce bugs that come about from complex interactions between microservices.
+- **All microservices in the application must be robust to handle failure of any other microservice.**
+    - It is important to consider how an application will cope when a microservice fails, and there is no other instance of the microservice to take its place. Any other microservices in an application must be robust enough to handle any failure in a microservice.
+
+**Using Microservices**
+
+Microservices Architectural style is a style relevant for applications that can be broken down into a collection of tasks or business capabilities. As tasks can be separated into compartmentalized microservices, the functionality of these services can be easily composed and recomposed to suit the needs of the application. This facilitates code reuse, and keeps code understandable and manageable.
+
+Microservices can be local, remote, or some combination of the two. They are ideal for promoting and facilitating code reuse. Also ideal for large applications. It keeps code understandable and manageable.
+
+Messaging between microservices have an overhead cost associated with their use, no matter what communication standards and protocols (HTTP, XML, etc.) is used. Also communication between microservices is also stateless. Depending on the application, however, it may be desirable to track the behavior of a user and their interactions. Web applications can do this with **cookies**, but this potentially increases the amount of data to transfer between microservices. The overhead cost of communication must be taken into account.
+
+**Example of Microservices.**
+
+Imagine a web application that allows users to find nearby restaurants, place a reservation, and review a restaurant.
+
+We can breakup this application into the following microservices:
+
+- **A user interface microservice** that allows the user to interact with the application.
+- **A restaurant catalogue microservice** that provides all restaurants in the system.
+- **A restaurant reservation microservice** that places a reservation with the selected restaurant.
+- **A restaurant review microservice** to access and make restaurant reviews.
+
+Assume all communication between microservices is HTTP and REST based.
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/microservices-2.png" width="400" hight="400"/>
+</p>
+
+- When a user visits the website for this application, the user interface microservice prompts the user to enter their location. Once the address is entered, the user interface microservice communicates with the restaurant catalogue microservice to determine nearby restaurants. This information is communicated back to the user interface microservice, and displayed to the user.
+- When a user chooses to view more details about a particular restaurant, the user interface microservice communicates with the restaurant review microservice to access the review of the restaurant. This is then displayed to the user, and it provides an option to write a review, or to place a reservation for a particular time.
+- If a user decides to review the restaurant, the user interface microservice communicates the review to the restaurant review microservice so it can be saved.
+- If a user decides to place a reservation, the user interface microservice communicates with the restaurant reservation microservice to inform the restaurant. This returns a confirmation message provided by the reservation microservice.
