@@ -645,3 +645,52 @@ The categories used to bind **interfaces** to concrete implementations are:
 </p>
 
 WSDL provides a **robust**, **modular**, and **extensible** service description language. WSDL description enables reuse because WSDL descriptions are broken into very fine descriptions which allow for the reuse of parts of WSDL specifications in different ways. WSDL documents can also import other WSDL documents, gaining them access to data types in the imported WSDL description or to interfaces.
+
+### Service Publication and Discovery (UDDI)
+
+Internet is a huge place, How do you find the services you need to build your app? How do you ensure their quality? If you create a service, how can you get people to use it? So web services need to be **published** and **discovered**.
+
+The advent of the Internet helped customers find services through **search engines**. However, it is important to advertise web services. This is known as **publishing**. The first framework for publishing was Universal Description, Discovery, and Integration (**UDDI**). 
+
+UDDI was created in 2000 by Ariba, Microsoft, and IBM, but it is now managed by the Organization for the Advancement of Structured Information Standards (**OASIS**), which is a non-profit organization that also manages a number of other open standards. UDDI was intended to be used to specify a universal registry and broker of web services, using **XML** and **WSDL** to structure data about the web services and how they were provided.
+
+UDDI its not tied to a specific registry, it is a standard for discovery and publishing aspects of web services. It useful standard to brining service requester and service provider together.
+
+**How it works?**
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/uddi-1.png" width="400" hight="400"/>
+</p>
+
+- First service providers **publish** themselves to UDD registry, Then service requester can **search** the registry by searching elements in WSDL description or other descriptions.
+- After search, requester can **bind** to it using WSDL descriptions to determine messaging pattern, then **invoke** these services
+
+**Publishing**
+
+Publishing registers information about the service with a **UDDI registry**, which includes information about the service provider, the service itself, and various technical descriptions of the service. A uniform resource identifier (**URI**) is assigned to the service by the UDDI registry. The URI is a unique reference used to **invoke** the service.
+
+The information that UDDI standard is contained three categories, White pages, Yellow pages, Green Pages 
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/uddi-2.png" width="400" hight="300"/>
+</p>
+
+- White pages, where information such as the business name, a short description, contact information, and unique business identification numbers is stored.
+- Yellow pages, which contain information about the service or industry that the business is in, including hierarchical information about the business. For example, exchange rates are a subset of currency services.
+- Green pages, which contain the technical details of how to use the service.
+
+**Information encapsulated in UDDI also falls into four data structures.**
+
+- businessEntity ⇒ white pages
+- businessService ⇒ yellow pages
+- bindingTemplate and tModel ⇒ green pages
+
+<p align="center" width="100%">
+  <img src="https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/Images/uddi-3.png" width="200" hight="200"/>
+</p>
+
+Service providers **publish**, including adding, deleting, and modifying entries to a registry through **SOAP** messages. Operations could be `save_business`, `save_service`, `save_binding`, `save_tModel`, or delete commands for these same elements.  UDDI also specifies web services for **discovery**. These are accessed by **SOAP** messages. Commands to search for services include `find_business`, `find_service`, `find_binding`, and `find_tModel`. Information can be requested with commands such as `get_businessDetail`, `get_serviceDetail`, etc.
+
+Once the service requester has information about the service interface, it can generate the necessary code to access the interface for the service. In other words, it can **dynamically bind** to it.
+
+Binding can be a highly dynamic, run-time activity, although this has repercussions for a developer. **For example**, it may prevent a developer from knowing what errors might occur or what exceptions may be generated, and thus from developing robust code. Or a web service provided by a business may require contracts or agreements, which are managed by people and not programs. Consequently, service discovery is usually a design-time activity. Binding can still be automated, although this may be challenging as it would require the interface description to be completely unambiguous.
